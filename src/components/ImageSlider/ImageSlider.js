@@ -1,5 +1,6 @@
 import axios from "axios";
 import Modal from "components/Modal/Modal";
+import SelectPost from "components/Post/SelectPost";
 import useStores from "lib/useStore";
 import { inject, observer } from "mobx-react";
 import { useCallback, useEffect, useState } from "react"
@@ -11,6 +12,7 @@ import './ImageSlider.scss';
 const ImageSlider = observer(() => {
 	const [postList, setPostList] = useState([]);
 	const [modal, setModal] = useState(false);
+	const [index, setIndex] = useState();
 
 	useEffect(() => {
 		fetchEvents();
@@ -25,8 +27,9 @@ const ImageSlider = observer(() => {
 		}
 	};
 
-	const modalSet = () => {
+	const modalSet = (postIdx) => {
 		setModal(!modal);
+		setIndex(postIdx)
 	}
 
 	const settings = {
@@ -42,11 +45,16 @@ const ImageSlider = observer(() => {
 
 	return (
 		<>
+			{modal ? (
+				<Modal handleClose={modalSet} width={'730px'} height={'250px'} none={true}>
+					<SelectPost postIdx={index} />
+				</Modal>
+			) : null}
 			<Slider {...settings} className="sli">
 				{postList.map(post => {
 					return (
 						<div className="piczone">
-							<img src={post.picture} className="pic"></img>
+							<img src={post.picture} className="pic" onClick={() => modalSet(post.postIdx)} />
 							<span className="hot-post" style={{ fontSize: '18px' }}>
 								제목 : <b>{post.title}<br /></b>
 								내용 : {post.content} <br />

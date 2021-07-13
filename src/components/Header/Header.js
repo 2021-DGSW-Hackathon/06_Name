@@ -8,10 +8,10 @@ const Header = () => {
       <header>
         <img src={WhiteLogo} alt="WhiteLogo" />
         <div className="menu">
-          <a className="HeaderA" href="#">
+          <a className="HeaderA" href="/">
             홈
           </a>
-          <a className="HeaderA" href="#">
+          <a className="HeaderA" href="/community">
             커뮤니티
           </a>
           <a className="HeaderA" href="#">

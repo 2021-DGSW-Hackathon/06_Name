@@ -1,5 +1,6 @@
 import HotPostContainer from "../../container/MainContainer/HotPostContainer";
 import PostModalContainer from "../../container/MainContainer/PostModalContainer";
+import './Main.scss'
 
 const Main = () => {
   return (

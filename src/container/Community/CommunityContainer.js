@@ -1,8 +1,9 @@
+const { default: Community } = require("components/community/Community")
 
 const CommunityContainer = () => {
 	return (
 		<>
-			Hello
+			<Community />
 		</>
 	)
 }
