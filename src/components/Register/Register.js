@@ -9,7 +9,7 @@ const Register = () => {
 			<div className="SignUp">
 				<img src={WhiteLogo} alt="WhiteLogo" />
 				<div className="menu">
-					<a href="#">회원가입</a>
+					<span className="reg">회원가입</span>
 					<a href="/">홈(로그인)</a>
 				</div>
 			</div>

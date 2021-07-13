@@ -28,6 +28,7 @@ const ImageSlider = () => {
 							<div>
 								{post.title}
 								{post.content}
+								<img src={post.picture} className="pic"></img>
 							</div>
 						</>
 					)
