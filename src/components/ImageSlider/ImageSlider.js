@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useState } from "react"
+import Slider from "react-slick";
 import { SERVER } from '../../config/config.json';
+import './ImageSlider.scss';
 
-import FadeIn from "react-fade-in";
 
 const ImageSlider = () => {
 	const [postList, setPostList] = useState([]);
@@ -18,23 +19,31 @@ const ImageSlider = () => {
 
 	fetchEvents();
 
+	const settings = {
+		dots: true,
+		speed: 1000,
+		autoplay: true,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		arrows: false,
+		infinite: true
+	};
 
 	return (
-		<FadeIn delay={400}>
-			<div className="postList">
-				{postList.map(post => {
-					return (
-						<>
-							<div>
-								{post.title}
-								{post.content}
-								<img src={post.picture} className="pic"></img>
-							</div>
-						</>
-					)
-				})}
-			</div>
-		</FadeIn>
+		<Slider {...settings} className="sli">
+			{postList.map(post => {
+				return (
+					<div className="piczone">
+						<img src={post.picture} className="pic"></img>
+						<span className="hot-post" style={{ fontSize: '18px' }}>
+							제목 : <b>{post.title}<br /></b>
+							내용 : {post.content} <br />
+							좋아요 수 :{post.countLike} <br />
+						</span>
+					</div>
+				)
+			})}
+		</Slider >
 	)
 }
 

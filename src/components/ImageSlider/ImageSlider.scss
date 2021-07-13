@@ -1,7 +1,33 @@
-.postList {
-	img {
-		.pic {
-			height: 200;
-		}
-	}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+
+.pic {
+	height: 450px;
+}
+
+.sli {
+	margin-top: 100px;
+	margin-left: 100px;
+	height: 500px;
+	width: 988px;
+	box-shadow: 3px 3px 10px 3px gray;
+}
+
+.piczone {
+	text-align: center;
+	vertical-align: middle;
+
+	margin: 0 auto;
+	width: 100%;
+
+	display: flex;
+	float: left;	
+}
+
+.pic {
+	width: 988px;
+	height: 420px;
+}
+
+.hot-post {
+	font-family: "Noto Sans KR", sans-serif;
 }
