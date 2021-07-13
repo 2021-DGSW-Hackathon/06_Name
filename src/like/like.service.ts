@@ -15,6 +15,7 @@ export class LikeService {
 			.select('pst.title', 'title')
 			.addSelect('pst.content', 'content')
 			.addSelect('pst.idx', 'postIdx')
+			.addSelect('pst.picture', 'picture')
 			.addSelect('COUNT(*) AS countLike')
 			.leftJoin('like.post', 'pst')
 			.limit(3)

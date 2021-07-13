@@ -12,4 +12,8 @@ export default class PostDto {
 	@IsNotEmpty()
 	@IsNumber()
 	categoryIdx!: number;
+
+	@IsNotEmpty()
+	@IsString()
+	picture!: string;
 }

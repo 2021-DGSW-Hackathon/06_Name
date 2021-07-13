@@ -97,6 +97,7 @@ export class CommunityService {
 		const post: Post = new Post();
 		post.title = title;
 		post.content = content;
+		post.picture = postDto.picture;
 		post.category = isCategory;
 		post.user = user;
 

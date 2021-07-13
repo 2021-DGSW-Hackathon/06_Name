@@ -15,6 +15,9 @@ export default class Post {
     @Column()
     content!: string;
 
+    @Column()
+    picture!: string;
+
     @JoinColumn({ name: 'fk_user_id' })
     @ManyToOne(type => User, {
         onDelete: 'SET NULL',
