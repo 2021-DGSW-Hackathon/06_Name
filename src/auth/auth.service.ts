@@ -32,6 +32,20 @@ export class AuthService {
 		return user;
 	}
 
+	async getOne(userId: string): Promise<User> {
+		const user: User | undefined = await this.userRepository.findOne({
+			where: {
+				id: userId,
+			}
+		});
+
+		if (user !== undefined) {
+			throw new UnauthorizedException('이미 존재하는 아이디');
+		}
+
+		return user;
+	}
+
 	async signUp(signupDto: SignUpDto): Promise<void> {
 		let user: User | undefined;
 		try {

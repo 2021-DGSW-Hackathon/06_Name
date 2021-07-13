@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Post, Query } from '@nestjs/common';
 import User from 'src/models/User';
 import { AuthService } from './auth.service';
 import SignInDto from './dto/signinDto';
@@ -34,6 +34,17 @@ export class AuthController {
 		return {
 			status: 200,
 			message: '회원가입 성공'
+		}
+	}
+
+	@Get('/check')
+	@HttpCode(200)
+	async checkId(@Query('userId') id: string) {
+		await this.authService.getOne(id);
+
+		return {
+			status: 200,
+			message: 'OK'
 		}
 	}
 }

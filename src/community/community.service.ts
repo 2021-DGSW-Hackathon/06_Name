@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import Category from 'src/models/Category';
 import Post from 'src/models/Post';
@@ -25,6 +25,21 @@ export class CommunityService {
 			.getMany();
 
 		return posts;
+	}
+
+	public async getPostByIdx(postIdx: number): Promise<Post> {
+		const post: Post | undefined = await this.comRepository.createQueryBuilder('post')
+			.leftJoinAndSelect('post.user', 'user')
+			.leftJoinAndSelect('post.category', 'category')
+			.orderBy('post.idx', 'DESC')
+			.where('post.idx = :postIdx', { postIdx })
+			.getOne()
+
+		if (post === undefined) {
+			throw new NotFoundException('존재하지 않는 게시물')
+		}
+
+		return post;
 	}
 
 	public async searchPost(word: string): Promise<Post[]> {

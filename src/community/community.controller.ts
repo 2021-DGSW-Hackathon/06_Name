@@ -40,6 +40,20 @@ export class CommunityController {
 		}
 	}
 
+	@Get('/:idx')
+	@HttpCode(200)
+	async getPost(@Param('idx') idx: number) {
+		const post: PostEntity = await this.comService.getPostByIdx(idx);
+
+		return {
+			status: 200,
+			data: {
+				post,
+			},
+			message: '글 죄회 성공'
+		}
+	}
+
 	@Get('/category/:userIdx')
 	@HttpCode(200)
 	async getPostsByCategory(@Param('userIdx') categoryIdx: number) {
