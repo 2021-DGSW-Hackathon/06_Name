@@ -1,5 +1,6 @@
 import Calendar from "./Calendar";
 import Category from "./Category";
+import Comment from "./Comment";
 import DetailCategory from "./DetailCategory";
 import Post from "./Post";
 import Subscribe from "./Subscribe";
