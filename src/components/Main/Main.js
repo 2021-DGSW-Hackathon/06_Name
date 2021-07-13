@@ -1,5 +1,5 @@
 import HotPostContainer from "../../container/MainContainer/HotPostContainer";
-import "./Main.scss";
+import PostModalContainer from "../../container/MainContainer/PostModalContainer";
 
 const Main = () => {
   return (
@@ -7,6 +7,7 @@ const Main = () => {
       <div className="Main-Content">
         <HotPostContainer />
       </div>
+      <PostModalContainer />
     </div>
   );
 };
