@@ -5,7 +5,9 @@ class ShowPostRepository {
 	getPost = async (idx) => {
 		const res = await axios.get(`${SERVER}/community/${idx}`)
 
-		const data = res.data;
+		const data = res.data.data.posts;
+
+		return data;
 	}
 }
 
