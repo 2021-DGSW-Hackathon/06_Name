@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
+.MainPic {
+  width: 210px;
+  height: 110px;
+  margin-left: 340px;
+  margin-bottom: 40px;
+  padding-top: 50px;
+}
+.ProfileForm {
+  width: 470px;
+  height: 70px;
+  border: 2px solid #c4c4c4;
+  font-family: "Noto Sans KR", sans-serif;
+  border-radius: 5px;
+  padding-left: 40px;
+  padding-top: 30px;
+  margin-top: -44px;
+  margin-right: 130px;
+  display: flex;
+  .RedLogo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .name {
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  .nickName {
+    font-size: 14px;
+    color: #777777;
+    margin-left: -50px;
+    margin-top: 25px;
+  }
+  .logoutIcon {
+    margin-left: 240px;
+    margin-top: 10px;
+  }
+  .logoutBtn {
+    border: 1px solid #777777;
+    background-color: transparent;
+    padding-inline-start: 22px;
+    border-radius: 25px;
+    height: 40px;
+    width: 100px;
+    color: #acacac;
+    margin-left: -30px;
+  }
+}
+
+.ProfileMenu {
+  width: 330;
+  height: 300px;
+  .ProfileUl {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    border: 1px solid black;
+    .ProfileLi {
+      margin: 0 0 0 0;
+      padding: 0 0 0 0;
+      border: 0;
+      float: left;
+      width: 20%;
+      .profileA {
+      }
+    }
+  }
+}
