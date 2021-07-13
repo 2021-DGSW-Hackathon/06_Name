@@ -10,9 +10,7 @@ class ShowPostStore {
 
 	@action
 	selectPostModal() {
-		console.log(this.isSelectModal, 3)
 		this.isSelectModal = !this.isSelectModal;
-		console.log(this.isSelectModal, 4)
 	}
 
 	@action

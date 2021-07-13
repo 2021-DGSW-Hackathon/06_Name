@@ -9,8 +9,8 @@ const Header = () => {
 			<header>
 				<img src={WhiteLogo} alt="WhiteLogo" />
 				<div className="menu">
-					<a href="#">홈</a>
-					<a href="#">커뮤니티</a>
+					<a href="/">홈</a>
+					<a href="/community">커뮤니티</a>
 					<a href="#">보관함</a>
 					<a href="#">캘린더</a>
 					<a href="#">덕무비</a>
