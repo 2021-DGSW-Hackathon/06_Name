@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap");
+
+header {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-left: 200px;
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  .menu {
+    margin-left: 1200px;
+    a {
+      font-family: "Noto Sans KR", sans-serif;
+      text-decoration: none;
+      color: #030303;
+      font-size: 20px;
+      text-align: center;
+      padding: 10px;
+    }
+    a:hover {
+      color: #fc6e51;
+    }
+  }
+}
+.subPic {
+  width: 500px;
+  height: 500px;
+  margin-left: 400px;
+  margin-top: 100px;
+}
+.signUp {
+  margin-left: 1000px;
+  margin-top: -550px;
+  .signUpForm {
+    .signUpSpan {
+      font-family: "Noto Sans KR", sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .signUpInfo {
+      border: 2px solid #c4c4c4;
+      width: 350px;
+      height: 500px;
+      border-radius: 3px;
+      margin-top: 20px;
+      padding: 50px;
+      .infoSpan {
+        color: #777777;
+      }
+      .infoInput {
+        background-color: #f3f3f3;
+        border-radius: 3px;
+        border: none;
+        width: 330px;
+        height: 50px;
+        margin-bottom: 20px;
+        margin-top: 5px;
+        padding-inline-start: 22px;
+      }
+      input:focus {
+        outline: none;
+      }
+      .idInput {
+        background-color: #f3f3f3;
+        border-radius: 3px;
+        border: none;
+        width: 220px;
+        height: 50px;
+        margin-bottom: 20px;
+        padding-inline-start: 22px;
+      }
+      .signUpBtn {
+        margin-top: 10px;
+      }
+      .password {
+        background-color: #f3f3f3;
+        border-radius: 3px;
+        border: none;
+        width: 330px;
+        height: 50px;
+        margin-bottom: 10px;
+        padding-inline-start: 22px;
+      }
+      .checkPassword {
+        background-color: #f3f3f3;
+        border-radius: 3px;
+        border: none;
+        width: 330px;
+        height: 50px;
+        margin-bottom: 20px;
+        padding-inline-start: 22px;
+      }
+      .checkBtn {
+        background-color: #fc6e51;
+        color: #ffffff;
+        border: none;
+        width: 90px;
+        height: 51px;
+        border-radius: 5px;
+        margin-left: 16px;
+      }
+      .signUpBtn {
+        background-color: #fc6e51;
+        color: #ffffff;
+        border: none;
+        width: 350px;
+        height: 51px;
+        border-radius: 5px;
+      }
+    }
+  }
+}

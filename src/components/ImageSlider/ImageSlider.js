@@ -1,21 +1,35 @@
+import axios from "axios";
 import { useState } from "react"
+import { SERVER } from '../../config/config.json';
 
 import FadeIn from "react-fade-in";
 
-const ImageSlider = ({ postLIst }) => {
-	const [index, setIndex] = useState(0);
+const ImageSlider = () => {
+	const [postList, setPostList] = useState([]);
+	const fetchEvents = async () => {
 
-	const handleSelect = (selectedIndex, e) => {
-		setIndex(selectedIndex);
+		try {
+			console.log(SERVER);
+			const res = await axios.get(`${SERVER}/like/hot`);
+			setPostList(res.data.data.posts);
+		} catch (e) {
+			console.log(e);
+		}
 	};
+
+	fetchEvents();
+
 
 	return (
 		<FadeIn delay={400}>
 			<div className="postList">
-				{postLIst.map((post, index) => {
+				{postList.map(post => {
 					return (
 						<>
-							{post.title}
+							<div>
+								{post.title}
+								{post.content}
+							</div>
 						</>
 					)
 				})}

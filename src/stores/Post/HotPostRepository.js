@@ -9,4 +9,4 @@ class HotPostRepository {
 	};
 }
 
-export default HotPostRepository;
+export default new HotPostRepository();
