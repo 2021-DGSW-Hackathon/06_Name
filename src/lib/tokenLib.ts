@@ -18,3 +18,7 @@ export const generateToken = (id: string): string => {
 export const decodedToken = (token: string) => {
 	return jwt.decode(token);
 }
+
+export const verifyToken = (token: string) => {
+	return jwt.verify(token, JWT_SECRET);
+};

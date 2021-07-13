@@ -1,25 +1,27 @@
 import { CanActivate, ExecutionContext } from "@nestjs/common";
 import HttpError from "src/lib/httpError";
 import { JWT_SECRET } from 'src/config/config';
+import * as tokenLib from 'src/lib/tokenLib';
 import jwt from 'jsonwebtoken';
+import User from "src/models/User";
 
 export default class AuthGuard implements CanActivate {
 	public canActivate(context: ExecutionContext): boolean {
 		const request = context.switchToHttp().getRequest();
 
-		const { access_token } = request.headers;
+		const token = request.headers['authorization'];
 
-		if (access_token === undefined) {
+		if (token === undefined) {
 			throw new HttpError(401, '토큰이 전송되지 않았습니다.');
 		}
 
-		request.user = this.validateToken(access_token);
+		request.user = this.validateToken(token);
 		return true;
 	}
 
-	public validateToken(token: string): string {
+	public validateToken(token: string): User {
 		try {
-			const verify: string = jwt.verify(token, JWT_SECRET) as string;
+			const verify: User = tokenLib.verifyToken(token) as User;
 			return verify;
 		} catch (error) {
 			switch (error.message) {
