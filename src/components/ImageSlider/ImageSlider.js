@@ -9,7 +9,6 @@ const ImageSlider = () => {
 	const fetchEvents = async () => {
 
 		try {
-			console.log(SERVER);
 			const res = await axios.get(`${SERVER}/like/hot`);
 			setPostList(res.data.data.posts);
 		} catch (e) {

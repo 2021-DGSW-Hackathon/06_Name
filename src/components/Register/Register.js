@@ -1,18 +1,18 @@
 import React from "react";
-import WhiteLogo from "./WhiteLogo.png";
-import SubPic from "./SubPic.png";
-import "./SignUp.scss";
+import WhiteLogo from "../../assets/WhiteLogo.png";
+import SubPic from "../../assets/SubPic.png";
+import "./Register.scss";
 
-const SignUp = () => {
+const Register = () => {
 	return (
 		<>
-			<header>
+			<div className="SignUp">
 				<img src={WhiteLogo} alt="WhiteLogo" />
 				<div className="menu">
 					<a href="#">회원가입</a>
-					<a href="#">홈(로그인)</a>
+					<a href="/">홈(로그인)</a>
 				</div>
-			</header>
+			</div>
 			<img src={SubPic} alt="subPic" className="subPic" />
 			<div className="signUp">
 				<div className="signUpForm">
@@ -36,4 +36,4 @@ const SignUp = () => {
 	);
 };
 
-export default SignUp;
+export default Register;

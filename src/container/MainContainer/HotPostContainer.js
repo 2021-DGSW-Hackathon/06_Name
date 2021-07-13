@@ -5,27 +5,11 @@ import { useCallback, useEffect } from "react";
 
 
 const HotPostContainer = observer(() => {
-	const { store } = useStores();
-	const { handlePost, postLIst } = store.HotPostStore;
-	console.log(postLIst);
-
-	const requestHandleHotPost = useCallback(async () => {
-		try {
-			const res = await handlePost();
-		} catch (err) {
-			return err;
-		}
-	});
-
-	useEffect(() => {
-		requestHandleHotPost();
-	}, []);
-
 	return (
 		<>
-			<ImageSlider postLIst={postLIst} />
+			<ImageSlider />
 		</>
 	)
-})
+});
 
 export default HotPostContainer;
