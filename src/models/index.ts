@@ -1,0 +1,16 @@
+import Calendar from "./Calendar";
+import Category from "./Category";
+import DetailCategory from "./DetailCategory";
+import Post from "./Post";
+import Subscribe from "./Subscribe";
+import User from "./User";
+
+export default [
+	Calendar,
+	Category,
+	Comment,
+	DetailCategory,
+	Post,
+	Subscribe,
+	User,
+]

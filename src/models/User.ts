@@ -10,4 +10,7 @@ export default class User {
 
 	@Column()
 	name!: string;
+
+	@Column()
+	nickName!: string;
 }
