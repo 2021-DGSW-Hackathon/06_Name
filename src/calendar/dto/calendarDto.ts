@@ -1,4 +1,4 @@
-import { IsDateString, IsNotEmpty, IsString } from "class-validator";
+import { IsDateString, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 export default class CalendarDto {
 	@IsNotEmpty()
@@ -8,4 +8,8 @@ export default class CalendarDto {
 	@IsNotEmpty()
 	@IsDateString()
 	date!: Date;
+
+	@IsNotEmpty()
+	@IsNumber()
+	categoryIdx!: number;
 }
