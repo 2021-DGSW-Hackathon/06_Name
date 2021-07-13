@@ -3,7 +3,6 @@ import User from 'src/models/User';
 import { AuthService } from './auth.service';
 import SignInDto from './dto/signinDto';
 import * as tokenLib from '../lib/tokenLib';
-import returnLib from '../lib/return';
 import SignUpDto from './dto/signupDto';
 
 @Controller('auth')
@@ -18,7 +17,13 @@ export class AuthController {
 		const user: User = await this.authService.getUser(signInDto);
 		const token: string = await tokenLib.generateToken(user.id);
 
-		return returnLib(200, '로그인 성공', { token: token });
+		return {
+			status: 200,
+			data: {
+				token,
+			},
+			message: '로그인 성공'
+		}
 	}
 
 	@Post('/signup')
@@ -26,6 +31,9 @@ export class AuthController {
 	async signUp(@Body() signUpDto: SignUpDto) {
 		await this.authService.signUp(signUpDto);
 
-		return returnLib(200, '회원가입 성공');
+		return {
+			status: 200,
+			message: '회원가입 성공'
+		}
 	}
 }
