@@ -7,6 +7,7 @@ function App() {
       <Switch>
         <Route exact path='/' render={() => <Pages.MainPage />} />
         <Route exact path="/register" render={() => <Pages.SignUpPage />} />
+        <Route exact path="/info" render={() => <Pages.IntroPage />} />
       </Switch>
     </>
   );
