@@ -1,12 +1,12 @@
-import { observer } from "mobx-react";
+import useStores from "lib/useStore";
 
-const { default: useStores } = require("lib/useStore")
-
-const SelectPost = ({ idx, getPost, postList }) => {
+const SelectPost = ({ postIdx }) => {
+	let data;
+	const { store } = useStores();
+	const { getPost } = store.ShowPostStore;
 	const fetchPost = async () => {
 		try {
-			const data = await getPost(idx);
-			console.log(data)
+			data = await getPost(postIdx);
 		} catch (e) {
 			console.log(e);
 		}
@@ -14,7 +14,7 @@ const SelectPost = ({ idx, getPost, postList }) => {
 		return (
 			<>
 				<div>
-					{postList.title}
+					{data.title}
 				</div>
 			</>
 		)
