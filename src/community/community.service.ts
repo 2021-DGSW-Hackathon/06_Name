@@ -53,11 +53,12 @@ export class CommunityService {
 		return posts;
 	}
 
-	public async getPostsByCategory(categoryIdx: number): Promise<Post[]> {
+	public async getPostsByCategory(category: string): Promise<Post[]> {
 		const posts: Post[] = await this.comRepository.createQueryBuilder('post')
 			.leftJoinAndSelect('post.user', 'user')
 			.leftJoinAndSelect('post.category', 'category')
-			.where('fk_category_idx = :categoryIdx', { categoryIdx })
+			.leftJoin('post.category', 'cate')
+			.where('cate.name = :category', { category })
 			.orderBy('post.idx', 'DESC')
 			.getMany();
 
@@ -80,12 +81,10 @@ export class CommunityService {
 		return post;
 	}
 
-	public async getMyPosts(user: User): Promise<Post[]> {
-		const posts: Post[] = await this.comRepository.find({
-			where: {
-				userId: user.id
-			}
-		});
+	public async getMyPosts(userId: string): Promise<Post[]> {
+		const posts: Post[] = await this.comRepository.createQueryBuilder()
+			.where('fk_user_id = :userId', { userId })
+			.getMany();
 
 		return posts;
 	}

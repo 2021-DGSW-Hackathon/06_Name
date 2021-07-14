@@ -65,4 +65,23 @@ export class AuthService {
 			throw new UnauthorizedException('이미 존재하는 계정');
 		}
 	}
+
+	async getMyInfo(user: User): Promise<User> {
+		let userInfo: User | undefined;
+		try {
+			userInfo = await this.userRepository.findOne({
+				where: {
+					id: user.id,
+				}
+			});
+
+			if (user === undefined) {
+				throw new UnauthorizedException('없음');
+			}
+
+			return userInfo;
+		} catch (err) {
+			throw new InternalServerErrorException('ㅅㅂㅇㄹ');
+		}
+	}
 }

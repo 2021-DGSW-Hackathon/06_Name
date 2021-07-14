@@ -40,34 +40,6 @@ export class CommunityController {
 		}
 	}
 
-	@Get('/:idx')
-	@HttpCode(200)
-	async getPost(@Param('idx') idx: number) {
-		const post: PostEntity = await this.comService.getPostByIdx(idx);
-
-		return {
-			status: 200,
-			data: {
-				post,
-			},
-			message: '글 죄회 성공'
-		}
-	}
-
-	@Get('/category/:userIdx')
-	@HttpCode(200)
-	async getPostsByCategory(@Param('userIdx') categoryIdx: number) {
-		const post: PostEntity[] = await this.comService.getPostsByCategory(categoryIdx);
-
-		return {
-			status: 200,
-			data: {
-				post,
-			},
-			message: '글 조회 성공(by category)'
-		}
-	}
-
 	@Get('/sort')
 	@HttpCode(200)
 	async getPostsSort() {
@@ -82,11 +54,25 @@ export class CommunityController {
 		}
 	}
 
+	@Get('/category')
+	@HttpCode(200)
+	async getPostsByCategory(@Query('category') category: string) {
+		const post: any = await this.comService.getPostsByCategory(category);
+
+		return {
+			status: 200,
+			data: {
+				post,
+			},
+			message: '글 조회 성공(by category)'
+		}
+	}
+
 	@Get('/my')
 	@UseGuards(new AuthGuard())
 	@HttpCode(200)
 	async getMyPosts(@Token() user: User) {
-		const posts: PostEntity[] = await this.comService.getMyPosts(user);
+		const posts: PostEntity[] = await this.comService.getMyPosts(user.id);
 
 		return {
 			status: 200,
@@ -96,6 +82,26 @@ export class CommunityController {
 			message: '자신의 글 조회 성공'
 		}
 	}
+
+	@Get('/:idx')
+	@HttpCode(200)
+	async getPost(@Param('idx') idx: number) {
+		const post: PostEntity = await this.comService.getPostByIdx(idx);
+
+		return {
+			status: 200,
+			data: {
+				post,
+			},
+			message: '글 죄회 성공'
+		}
+	}
+
+
+
+
+
+
 
 	@Post('/')
 	@UseGuards(new AuthGuard())

@@ -13,5 +13,5 @@ export const dbConfig = {
 }
 
 export const ENDPOINT = {
-	SERVER: "http://172.28.109.146:8080",
+	SERVER: "http://172.16.2.92:8080",
 }

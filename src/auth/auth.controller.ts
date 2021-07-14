@@ -1,9 +1,11 @@
-import { Body, Controller, Get, HttpCode, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Post, Query, UseGuards } from '@nestjs/common';
 import User from 'src/models/User';
 import { AuthService } from './auth.service';
 import SignInDto from './dto/signinDto';
 import * as tokenLib from '../lib/tokenLib';
 import SignUpDto from './dto/signupDto';
+import { Token } from 'src/lib/tokenDeco';
+import AuthGuard from 'src/middleware/auth.middleware';
 
 @Controller('auth')
 export class AuthController {
@@ -45,6 +47,21 @@ export class AuthController {
 		return {
 			status: 200,
 			message: 'OK'
+		}
+	}
+
+	@Get('/my')
+	@UseGuards(new AuthGuard())
+	@HttpCode(200)
+	async myInfo(@Token() user: User) {
+		const userInfo: User = await this.authService.getMyInfo(user);
+
+		return {
+			status: 200,
+			data: {
+				userInfo,
+			},
+			message: 'ok'
 		}
 	}
 }
