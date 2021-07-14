@@ -1,7 +1,6 @@
 import React from "react";
 import "./Intro.scss";
 import RedLogo from "../../assets/RedLogo.png";
-import React from 'react';
 import './Intro.scss';
 
 const Intro = () => {
