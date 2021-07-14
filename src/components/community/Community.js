@@ -5,6 +5,8 @@ import { Button, makeStyles, withStyles } from '@material-ui/core'
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from 'react-select';
 import FormControl from '@material-ui/core/FormControl';
+import axios from 'axios';
+import { SERVER } from '../../config/config.json';
 
 const ColorButton = withStyles((theme) => ({
 	root: {
@@ -40,13 +42,56 @@ const Community = () => {
 		SetCategory(e.value)
 	}
 
+	const getPostByHot = async () => {
+		try {
+			const res = await axios.get(`${SERVER}/like/hotlist`);
+			const data = res.data.data.posts
+			setPostList(data);
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
+	const getPostByDate = async () => {
+		try {
+			const res = await axios.get(`${SERVER}/community/sort`);
+			const data = res.data.data.posts;
+			console.log(data)
+			setPostList(data);
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
 	return (
 		<>
 			<div>
-				<ColorButton variant="contained" className="list-ink" style={{ marginRight: '20px' }}>인기순</ColorButton>
-				<ColorButton variant="contained" className="list-ch">최신순</ColorButton>
+				<ColorButton variant="contained" className="list-ink" style={{ marginRight: '20px' }} onClick={getPostByHot}>인기순</ColorButton>
+				<ColorButton variant="contained" className="list-ch" onClick={getPostByDate}>최신순</ColorButton>
 				<Select onChange={categorySet} options={options} className="sel" />
 			</div>
+			{postList ? (
+				<div className="content">
+					{postList.map(post => {
+						return (
+							<div className="com">
+								<div className="com-title">
+									{post.title}
+								</div>
+								<div className="com-content">
+									{post.content}
+								</div>
+								<div className="com-picture">
+									{post.picture}
+								</div>
+								<div className="com-like">
+									{post.countLike}
+								</div>
+							</div>
+						)
+					})}
+				</div>
+			) : null}
 		</>
 	)
 }
