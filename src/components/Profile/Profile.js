@@ -8,6 +8,7 @@ import { SERVER } from "../../config/config.json";
 import { useHistory } from "react-router-dom";
 
 const Profile = () => {
+  const [type, setType] = useState(0);
   const [name, setName] = useState();
   const [nickName, setNickName] = useState();
   const history = useHistory();
@@ -38,6 +39,44 @@ const Profile = () => {
     history.push("/");
   };
 
+  const getMyLike = async () => {
+    try {
+      const res = await axios.get(`${SERVER}/like/my`, {
+        headers: {
+          authorization: Token,
+        }
+      });
+      console.log(res.data.data.posts);
+    } catch (err) {
+      console.log(err);
+    }
+    setType(0);
+  }
+
+  const getCalendar = async () => {
+    try {
+      const res = await axios.get(`${SERVER}/calendar`);
+      console.log(res.data.data.calendar)
+    } catch (err) {
+      console.log(err);
+    }
+    setType(1);
+  }
+
+  const getMyPost = async () => {
+    try {
+      const res = await axios.get(`${SERVER}/community/my`, {
+        headers: {
+          authorization: Token
+        }
+      });
+      console.log(res.data.data.posts);
+    } catch (err) {
+      console.log(err);
+    }
+    setType(2);
+  }
+
   return (
     <>
       <div className="Profile">
@@ -62,17 +101,17 @@ const Profile = () => {
         <nav className="ProfileMenu">
           <ul className="ProfileUl">
             <li className="ProfileLi">
-              <a className="ProfileA" href="#">
-                MY 구독
-              </a>
+              <button className="ProfileA" onClick={getMyLike}>
+                MY 좋아요
+              </button>
             </li>
             <li className="ProfileLi">
-              <a className="ProfileA" href="#">
+              <a className="ProfileA" onClick={getCalendar}>
                 캘린더
               </a>
             </li>
             <li className="ProfileLi">
-              <a className="ProfileA" href="#">
+              <a className="ProfileA" onClick={getMyPost}>
                 내 게시물
               </a>
             </li>

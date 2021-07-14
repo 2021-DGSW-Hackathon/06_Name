@@ -45,11 +45,6 @@ const ImageSlider = observer(() => {
 
 	return (
 		<>
-			{modal ? (
-				<Modal handleClose={modalSet} width={'730px'} height={'250px'} none={true}>
-					<SelectPost postIdx={index} />
-				</Modal>
-			) : null}
 			<Slider {...settings} className="sli">
 				{postList.map(post => {
 					return (
