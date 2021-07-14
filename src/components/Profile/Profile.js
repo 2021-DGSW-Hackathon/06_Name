@@ -4,7 +4,7 @@ import { GrLogout } from "react-icons/gr";
 import MainPic from "../../assets/MainPic.png";
 import RedLogo from "../../assets/RedLogo.png";
 import axios from "axios";
-import { SERVER } from '../../config/config.json';
+import { SERVER } from "../../config/config.json";
 import { useHistory } from "react-router-dom";
 
 const Profile = () => {
@@ -12,7 +12,7 @@ const Profile = () => {
   const [nickName, setNickName] = useState();
   const history = useHistory();
 
-  const Token = sessionStorage.getItem('authorization');
+  const Token = sessionStorage.getItem("authorization");
 
   useEffect(() => {
     fetchUserInfo();
@@ -22,21 +22,21 @@ const Profile = () => {
     try {
       const res = await axios.get(`${SERVER}/auth/my`, {
         headers: {
-          'authorization': Token,
-        }
-      })
+          authorization: Token,
+        },
+      });
       const userData = res.data.data.userInfo;
       setName(userData.name);
       setNickName(userData.nickName);
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   const LogOut = () => {
     sessionStorage.clear();
-    history.push('/');
-  }
+    history.push("/");
+  };
 
   return (
     <>
@@ -44,12 +44,20 @@ const Profile = () => {
         <img src={MainPic} alt="subPic" className="MainPic2" />
         <div className="ProfileForm">
           <img src={RedLogo} alt="subPic" className="RedLogo" />
-          <span className="name">{name}</span>
-          <span className="nickName">{nickName}</span>
+          <div className="nameInfo">
+            <div>
+              <span className="name">{name}</span>
+            </div>
+            <div>
+              <span className="nickName">{nickName}</span>
+            </div>
+          </div>
           <span className="logoutIcon">
             <GrLogout />
           </span>
-          <button className="logoutBtn" onClick={LogOut}>로그아웃</button>
+          <button className="logoutBtn" onClick={LogOut}>
+            로그아웃
+          </button>
         </div>
         <nav className="ProfileMenu">
           <ul className="ProfileUl">
