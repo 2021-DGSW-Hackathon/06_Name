@@ -1,52 +1,44 @@
-import React, { Component } from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import React, { useRef, useState } from 'react';
+import '@toast-ui/editor/dist/toastui-editor.css';
+import { Editor } from '@toast-ui/react-editor';
+import './Editor.scss'
 import axios from 'axios';
-import './Editor.scss';
+import { SERVER } from '../../config/config.json';
 
-class EditorComponent extends Component {
-  constructor(props) {
-    super(props);
+const EditorComponents = () => {
+  const editorRef = useRef();
+  const [content, setContent] = useState();
+  const [file, setFile] = useState();
+
+  const btnClick = () => {
+    const editorInstance = editorRef.current.getInstance();
+    const getContent_md = editorInstance.getMarkdown();
+    setContent(getContent_md);
   }
 
-  modules = {
-    toolbar: [
-      //[{ 'font': [] }],
-      [{ 'header': [1, 2, false] }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-      ['link', 'image'],
-      [{ 'align': [] }, { 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-      ['clean']
-    ],
+  const onChangeFile = async (e) => {
+    setFile(e.target.value);
+
+    const formData = new FormData();
+    formData.append('file', file);
+
+    const res = await axios.post(`${SERVER}/upload`, formData);
+
+    console.log(res);
   }
 
-  formats = [
-    //'font',
-    'header',
-    'bold', 'italic', 'underline', 'strike', 'blockquote',
-    'list', 'bullet', 'indent',
-    'link', 'image',
-    'align', 'color', 'background',
-  ]
-
-  render() {
-    const { value, onChange } = this.props;
-    return (
-      <div style={{ height: "700px" }}>
-        <div className="editor-width">
-          <ReactQuill
-            style={{ height: "650px" }}
-            theme="snow"
-            modules={this.modules}
-            formats={this.formats}
-            value={value || ''}
-            onChange={(content, delta, source, editor) => onChange(editor.getHTML())} />
-        </div>
+  return (
+    <>
+      <div className="editor">
+        <input className="title-form" type="text"></input>
+        <Editor usageStati dstics={false} value="Editor" ref={editorRef} />
       </div>
-
-    )
-  }
+      <div>
+        <button style={{ marginTop: '10px' }} onClick={btnClick}>Button</button>
+        <input className="file-form" type='file' onChange={onChangeFile}></input>
+      </div>
+    </>
+  )
 }
 
-export default EditorComponent;
+export default EditorComponents;

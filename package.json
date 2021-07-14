@@ -32,11 +32,8 @@
     "react-fade-in": "^2.0.1",
     "react-icon": "^1.0.0",
     "react-icons": "^4.2.0",
-<<<<<<< HEAD
     "react-quill": "^1.3.5",
-=======
     "react-modal": "^3.14.3",
->>>>>>> b626d76810d583f1efb55509545343e450ec4934
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-select": "^4.3.1",
