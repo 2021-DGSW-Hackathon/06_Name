@@ -1,10 +1,12 @@
 const {
-	addDecoratorsLegacy, // decorator를 사용할 수 있도록 해주는 config
-	disableEsLint,
+	addDecoratorsLegacy,
+	disableEsLint, // eslint를 끄는 것이 아니에요 ^^
 	override,
-} = require('customize-cra');
+} = require("customize-cra");
 
-// 사용자 정의 웹팩 설정
 module.exports = {
-	webpack: override(disableEsLint(), addDecoratorsLegacy()),
+	webpack: override(
+		disableEsLint(),
+		addDecoratorsLegacy()
+	),
 };

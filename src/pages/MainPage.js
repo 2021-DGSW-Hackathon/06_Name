@@ -1,7 +1,7 @@
 import Main from 'components/Main/Main'
 import { Route } from 'react-router-dom';
 import Header from '../components/Header/Header';
-import Register from '../components/Register/Register';
+import * as Pages from "../pages";
 
 const MainPage = () => {
 	return (

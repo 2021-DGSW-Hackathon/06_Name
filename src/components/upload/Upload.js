@@ -1,0 +1,6 @@
+const Upload = (files) => {
+
+  return (
+    
+  )
+}
