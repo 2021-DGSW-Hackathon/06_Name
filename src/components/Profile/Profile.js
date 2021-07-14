@@ -63,11 +63,6 @@ const Profile = () => {
           <ul className="ProfileUl">
             <li className="ProfileLi">
               <a className="ProfileA" href="#">
-                알림
-              </a>
-            </li>
-            <li className="ProfileLi">
-              <a className="ProfileA" href="#">
                 MY 구독
               </a>
             </li>
