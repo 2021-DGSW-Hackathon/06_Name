@@ -14,13 +14,13 @@ const Header = () => {
           <a className="HeaderA" href="/community">
             커뮤니티
           </a>
-          <a className="HeaderA" href="#">
+          <a className="HeaderA" href="/storagebox">
             보관함
           </a>
           <a className="HeaderA" href="/Calendar">
             캘린더
           </a>
-          <a className="HeaderA" href="#">
+          <a className="HeaderA" href="/intro">
             OD9 소개
           </a>
         </div>

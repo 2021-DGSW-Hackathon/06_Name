@@ -1,0 +1,26 @@
+.Intro {
+  text-align: center;
+  margin-top: 100px;
+  .top {
+    font-size: 30px;
+    color: #fc6e51;
+    font-weight: bolder;
+  }
+
+  .Intro-Content {
+    margin-top: 20px;
+    .mid {
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    .end {
+      font-size: 15px;
+    }
+  }
+  .IntroLogo {
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 300px;
+    height: 300px;
+  }
+}

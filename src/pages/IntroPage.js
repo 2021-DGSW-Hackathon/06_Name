@@ -1,6 +1,5 @@
-import React from 'react';
-import Intro from 'components/Intro/Intro';
-import Header from 'components/Header/Header';
+import Intro from "../components/Intro/Intro";
+import Header from "../components/Header/Header";
 
 const IntroPage = () => {
   return (
@@ -8,7 +7,7 @@ const IntroPage = () => {
       <Header />
       <Intro />
     </>
-  )
-}
+  );
+};
 
 export default IntroPage;
