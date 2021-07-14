@@ -1,22 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Profile.scss";
 import { GrLogout } from "react-icons/gr";
 import MainPic from "../../assets/MainPic.png";
 import RedLogo from "../../assets/RedLogo.png";
+import axios from "axios";
+import { SERVER } from '../../config/config.json';
+import { useHistory } from "react-router-dom";
 
 const Profile = () => {
+  const [name, setName] = useState();
+  const [nickName, setNickName] = useState();
+  const history = useHistory();
+
+  const Token = sessionStorage.getItem('authorization');
+
+  useEffect(() => {
+    fetchUserInfo();
+  }, []);
+
+  const fetchUserInfo = async () => {
+    try {
+      const res = await axios.get(`${SERVER}/auth/my`, {
+        headers: {
+          'authorization': Token,
+        }
+      })
+      const userData = res.data.data.userInfo;
+      setName(userData.name);
+      setNickName(userData.nickName);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const LogOut = () => {
+    sessionStorage.clear();
+    history.push('/');
+  }
+
   return (
     <>
       <div className="Profile">
         <img src={MainPic} alt="subPic" className="MainPic2" />
         <div className="ProfileForm">
           <img src={RedLogo} alt="subPic" className="RedLogo" />
-          <span className="name">박지나</span>
-          <span className="nickName">무병장수</span>
+          <span className="name">{name}</span>
+          <span className="nickName">{nickName}</span>
           <span className="logoutIcon">
             <GrLogout />
           </span>
-          <button className="logoutBtn">로그아웃</button>
+          <button className="logoutBtn" onClick={LogOut}>로그아웃</button>
         </div>
         <nav className="ProfileMenu">
           <ul className="ProfileUl">

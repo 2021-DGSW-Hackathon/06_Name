@@ -6,11 +6,13 @@ import axios from "axios";
 import { SERVER } from '../../config/config.json';
 import Cookies from "js-cookie";
 import Swal from 'sweetalert2';
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   const [check, setCheck] = useState(false);
+  const history = useHistory();
 
   const onChangeId = (e) => {
     setId(e.target.value);
@@ -40,8 +42,10 @@ const Login = () => {
       if (check === true && res.data.status === 200) {
         Cookies.set('authorization', res.data.data.token, 7);
         sessionStorage.setItem('authorization', res.data.data.token);
+        history.push('/')
       } else if (res.data.status === 200) {
         sessionStorage.setItem('authorization', res.data.data.token);
+        history.push('/')
       }
     } catch (err) {
       if (err.response.status === 401) {
@@ -53,8 +57,6 @@ const Login = () => {
       }
     }
   }
-
-  const token = sessionStorage.getItem('authorization');
 
   return (
     <>
